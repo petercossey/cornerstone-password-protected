@@ -15,17 +15,6 @@
             document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
         </script>
 
-        <!-- Redirect guest users to login page -->
-        {{#if NOT customer}}
-        <script>
-            const holdingOrLoginPath = window.location.pathname == '/holding-page/' || window.location.pathname == '/login.php';
-            if (!holdingOrLoginPath) {
-                window.location.pathname = '/holding-page/';
-            }
-        </script>
-        <!-- End -->
-        {{/if}}
-
         {{> components/common/polyfill-script }}
         <script>window.consentManagerTranslations = `{{{langJson 'consent_manager'}}}`;</script>
 
@@ -66,26 +55,16 @@
     <body>
         <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
 
+        {{> components/common/body }}
+
         {{#if NOT customer}}
-            {{#if page_type '===' 'login'}}
-                {{> components/common/body }}
-            {{else if page_type '===' 'createaccount'}}
-                {{> components/common/body }}
-            {{else if page_type '===' 'forgotpassword'}}
-                {{> components/common/body }}
-            {{else}}
-                <div class="container" style="text-align:center">
-                    <div class="login">
-                        <h1 class="page-heading">Access restricted</h1>
-                        <p>You need to be a registered user to access this site.</p>
-                        <p><a href="/login.php" class="button button--primary">Go to sign in</a></p>
-                    </div>
-                </div>
-            {{/if}}
-        {{else}}
-            {{> components/common/header }}
-            {{> components/common/body }}
-            {{> components/common/footer }}
+        <div class="container" style="text-align:center">
+            <div class="login">
+                <h1 class="page-heading">Login or register to access {{settings.store_name}}</h1>
+                <p>You need to be a registered user to access this site.</p>
+                <p><a href="/login.php" class="button button--primary">Go to sign in</a></p>
+            </div>
+        </div>
         {{/if}}
 
         <script>window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>
