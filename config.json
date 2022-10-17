@@ -1,6 +1,6 @@
 {
   "name": "Cornerstone Password Protected",
-  "version": "6.6.1",
+  "version": "6.6.2",
   "template_engine": "handlebars_v4",
   "meta": {
     "price": 0,
