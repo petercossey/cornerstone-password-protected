@@ -1,5 +1,5 @@
 {
-  "name": "Cornerstone Password Protected",
+  "name": "Cornerstone Restricted with Holding Page",
   "version": "6.6.2",
   "template_engine": "handlebars_v4",
   "meta": {
